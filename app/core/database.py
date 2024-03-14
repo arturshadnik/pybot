@@ -1,13 +1,13 @@
 from typing import Coroutine, Any, List, Union
 from datetime import datetime
 import firebase_admin
-from firebase_admin import firestore_async
+# from firebase_admin import firestore_async
+from google.cloud import firestore_v1
 from app.core.models import Message
 from app.core.logger import logger
 
 try:
-    app = firebase_admin.initialize_app()
-    db = firestore_async.client(app)
+    db = firestore_v1.AsyncClient()
     logger.info("Firebase initialized")
 except Exception as e:
     logger.exception(e)
