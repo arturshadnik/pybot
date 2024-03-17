@@ -8,7 +8,7 @@ from app.core.agent import process_incoming_message
 router = APIRouter()
 
 @router.post('/chat/{id}')
-async def process_message(id: str, level: str, message: str, api_key: Optional[str] = Body(...)) -> Union[Message, None]:
+async def process_message(id: str, level: str, message: str, api_key: Optional[str] = Body(default=None)) -> Union[Message, None]:
     try:
         if message == "conversation:reset":
             await delete_conversation(f"{id}-{level}")
