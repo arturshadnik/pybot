@@ -19,7 +19,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(routes.router, prefix="/v1", tags=[""])
+app.include_router(routes.router, tags=[""])
 
 @app.get('/health-check')
 async def health_check():
